@@ -9,11 +9,13 @@
 * Rabin Karp - It is a pattern search algorithm of order O(n+m) where n,m : length of two strings
 * Expression Evaluation - evaluates given mathematical expression using stacks
 * Sieve Of Eratosthenes - efficient way to find all prime numbers from 1 to n 
-* Merge Sort O(nlogn)
-* Quicksort O(nlogn)
+* Merge Sort T(n) = O(nlogn)
+* Quicksort  T(n) = O(nlogn)
 
 
 
 # Data strucures
+* Linked List
 * Stack
 * Queue
+* Hashtable
