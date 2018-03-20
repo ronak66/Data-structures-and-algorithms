@@ -20,3 +20,4 @@
 * Stack
 * Queue
 * Hashtable
+* Binary Heap
