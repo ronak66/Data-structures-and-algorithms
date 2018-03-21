@@ -1,3 +1,5 @@
+// This is min binary heap
+
 #include<stdio.h>
 #include<stdlib.h>
 int n=13;

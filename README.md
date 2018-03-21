@@ -20,4 +20,4 @@
 * Stack
 * Queue
 * Hashtable
-* Binary Heap
+* Binary Heap(Min)
