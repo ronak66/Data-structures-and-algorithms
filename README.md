@@ -21,3 +21,5 @@
 * Queue
 * Hashtable
 * Binary Heap(Min)
+* Binary Indexed Tree
+* AVL_Tree (Balanced Binary Search Tree)
