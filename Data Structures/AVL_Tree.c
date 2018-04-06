@@ -137,6 +137,67 @@ struct node* insert(struct node* node,int key)
 
 }
 
+struct node* minV(struct node* root)
+{
+	while(root->left)
+		root = root->left;
+	return root;
+}
+
+struct node* delete(struct node* node,int key)
+{
+	if(node == NULL)
+		return node;
+	if(key < node->key)
+		node->left = delete(node->left,key);
+	else if(key > node->key)
+		node->right = delete(node->right,key);
+	else
+	{
+		if(node->left == NULL || node->right==NULL)
+		{
+			struct node *temp = node->left? node->left : node->right;
+			if(temp == NULL)
+				node = NULL;
+			else
+				*node = *temp;
+		}
+		else
+		{
+			struct node *temp = minV(node->right);
+			node->key = temp->key;
+			node->right = delete(node->right,temp->key);
+		}
+	}
+
+	if(node == NULL)
+		return node;
+
+	node->height = max(height(node->left),height(node->right))+1;
+	int balance = 0;
+	balance = abs(getBalance(node));
+
+	if(balance > 1)
+	{
+		if(node->right)
+		{	
+			if(key > (node->key) && key < ((node->right)->key))
+				return r_zigzag(node);
+			if(key > (node->key) && key > ((node->right)->key))
+				return r_zigzig(node);
+		}
+		if(node->left)
+		{
+			if(key < (node->key) && key > ((node->left)->key))
+				return l_zigzag(node);
+			if(key < (node->key) && key < ((node->left)->key))
+				return l_zigzig(node);
+		}
+
+	}
+	return node;
+}
+
 void preOrder(struct node *root)
 {
     if(root != NULL)
@@ -158,7 +219,7 @@ int main()
   	root = insert(root, 40);
   	root = insert(root, 50);
   	root = insert(root, 25);
- 
+ 	root = delete(root, 30);
   
   	preOrder(root);
   	
