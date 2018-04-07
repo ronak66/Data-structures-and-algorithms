@@ -22,4 +22,5 @@
 * Hashtable
 * Binary Heap(Min)
 * Binary Indexed Tree
+* Segment Tree
 * AVL_Tree (Balanced Binary Search Tree)
