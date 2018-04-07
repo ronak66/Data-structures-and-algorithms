@@ -4,6 +4,7 @@
 struct node{
 	int key;
 	int height;
+	int numNodes; 
 	struct node *left,*right;
 };
 
@@ -19,6 +20,7 @@ struct node* newNode(int key)
     nodee->left   = NULL;
     nodee->right  = NULL;
     nodee->height = 0; 
+    nodee->numNodes = 1;
     return(nodee);
 }
 
@@ -27,6 +29,12 @@ int height(struct node *N)
     if (N == NULL)
         return -1;
     return N->height;
+}
+int getnodes(struct node *N)
+{
+	if(N == NULL)
+		return 0;
+	return N->numNodes;
 }
 
 int getBalance(struct node *N)
@@ -50,6 +58,10 @@ struct node* r_zigzag(struct node* z)
 	y->height = max(height(y->left),height(y->right))+1;
 	x->height = max(height(x->left),height(x->right))+1;
 
+	z->numNodes = getnodes(z->left)+getnodes(z->right)+1;
+	y->numNodes = getnodes(y->left)+getnodes(y->right)+1;
+	x->numNodes = getnodes(x->left)+getnodes(x->right)+1;
+
 
 
 	return x;
@@ -68,6 +80,10 @@ struct node* l_zigzag(struct node* z)
 	y->height = max(height(y->left),height(y->right))+1;
 	x->height = max(height(x->left),height(x->right))+1;
 
+	z->numNodes = getnodes(z->left)+getnodes(z->right)+1;
+	y->numNodes = getnodes(y->left)+getnodes(y->right)+1;
+	x->numNodes = getnodes(x->left)+getnodes(x->right)+1;
+
 	return x;
 }
 struct node* r_zigzig(struct node* z)
@@ -82,6 +98,10 @@ struct node* r_zigzig(struct node* z)
 	z->height = max(height(z->left),height(z->right))+1;
 	x->height = max(height(x->left),height(x->right))+1;
 	y->height = max(height(y->left),height(y->right))+1;
+
+	z->numNodes = getnodes(z->left)+getnodes(z->right)+1;
+	x->numNodes = getnodes(x->left)+getnodes(x->right)+1;
+	y->numNodes = getnodes(y->left)+getnodes(y->right)+1;
 	
 	return y;
 }
@@ -97,6 +117,10 @@ struct node* l_zigzig(struct node* z)
 	z->height = max(height(z->left),height(z->right))+1;
 	x->height = max(height(x->left),height(x->right))+1;
 	y->height = max(height(y->left),height(y->right))+1;
+
+	z->numNodes = getnodes(z->left)+getnodes(z->right)+1;
+	x->numNodes = getnodes(x->left)+getnodes(x->right)+1;
+	y->numNodes = getnodes(y->left)+getnodes(y->right)+1;
 	
 	return y;
 }
@@ -114,6 +138,7 @@ struct node* insert(struct node* node,int key)
 	node->height = max(height(node->left),height(node->right))+1;
 	int balance = 0;
 	balance = abs(getBalance(node));
+	node->numNodes = getnodes(node->left)+getnodes(node->right)+1;
 
 	if(balance > 1)
 	{
@@ -176,6 +201,7 @@ struct node* delete(struct node* node,int key)
 	node->height = max(height(node->left),height(node->right))+1;
 	int balance = 0;
 	balance = abs(getBalance(node));
+	node->numNodes = getnodes(node->left)+getnodes(node->right)+1;
 
 	if(balance > 1)
 	{
@@ -202,7 +228,7 @@ void preOrder(struct node *root)
 {
     if(root != NULL)
     {
-        printf("%d %d\n", root->key,root->height);
+        printf("%d %d %d\n", root->key,root->height,root->numNodes);
         preOrder(root->left);
         preOrder(root->right);
     }
