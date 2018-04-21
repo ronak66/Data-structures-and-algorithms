@@ -24,3 +24,5 @@
 * **Binary Indexed Tree**
 * **Segment Tree**
 * **AVL_Tree (Balanced Binary Search Tree)**
+
+Try Solving these problems [Problems](https://ronak66.github.io/Data-structures-and-algorithms)
