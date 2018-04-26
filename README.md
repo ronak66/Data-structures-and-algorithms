@@ -14,7 +14,7 @@ average O(n)
 * **Quicksort** -  T(n) = O(nlogn)
 
 #### Graph Theory
-* **Dijikstra's Algorithm** - Single Source Shortest Path problem T(n) = O((E+V)logV) using min heap
+* **Dijkstra's Algorithm** - Single Source Shortest Path problem T(n) = O((E+V)logV) using min heap
 * **Depth First Search**
 * **Breath First Search**
 * **Prims Algorithm** - To find min span tree
