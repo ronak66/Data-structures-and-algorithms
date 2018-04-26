@@ -13,6 +13,11 @@
 * **Merge Sort** - T(n) = O(nlogn)
 * **Quicksort** -  T(n) = O(nlogn)
 
+#### Graph Theory
+* **Dijikstra's Algorithm** - Single Source Shortest Path problem T(n) = O((E+V)logV)
+* **Depth First Search**
+* **Breath First Search**
+* **Prims Algorithm** - To find min span tree
 
 
 # Data strucures
