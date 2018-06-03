@@ -244,15 +244,19 @@ void shortest_path(struct node * graph[], int n, int a)
 
 int main()
 {
-	int n=6;					//no.of vertices
+	int n,m;
+	scanf("%d %d",&n,&m);
+	//no.of vertices
 	struct node* graph[n];
 	for (int i = 0; i < n; ++i)
 	{
 		graph[i]=(struct node*)malloc(sizeof(struct node));
+		graph[i]->value = i+1;
 		graph[i]->start=graph[i]->current=NULL;
 		graph[i]->c='r';
 	}
-	graph[0]->value=41;
+
+	/*graph[0]->value=41;
 	graph[1]->value=30;
 	graph[2]->value=10;
 	graph[3]->value=2;
@@ -273,7 +277,13 @@ int main()
 	add_edge(5,10,4,n,graph);
 	add_edge(61,5,7,n,graph);
 	add_edge(61,2,6,n,graph);
-	add_edge(5,30,15,n,graph);
-	shortest_path(graph,n,graph[0]->value);
+	add_edge(5,30,15,n,graph);*/
+	for(int i=0;i<m;i++)
+	{
+		int u,v,w;
+		scanf("%d %d %d",&u,&v,&w);
+		add_edge(u,v,w,n,graph);
+	}
+	shortest_path(graph,n,graph[1]->value);
 	return 0;
 }
