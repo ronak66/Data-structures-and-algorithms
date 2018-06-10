@@ -12,8 +12,8 @@
 4. 	**(ab)%m = (a%m * b%m)%m**
  
 5. 	A Year is called Leap Year if:  
-*	 	Year is divisible by 400  
-*	 	OR Year is divisible by 4 but not by 100
+	*	 Year is divisible by 400  
+	*	 OR Year is divisible by 4 but not by 100
 
 6. 	**n^2 = sum(2i+1)** where i = 0,1,2... n terms
 		- for eg: 5^2 = 1+3+5+7+9 = 25
@@ -24,8 +24,8 @@
 
    	>	Euclid’s algorithm.&nbsp; **O(log(min(a,b)))**  
 
-*		if(a == 0) return b;  
-*		return GCD(b%a,a);     
+	*	if(a == 0) return b;  
+	*	return GCD(b%a,a);     
 
    	}
 8. 	LCM(a,b) = (a*b)/GCD(a,b)
