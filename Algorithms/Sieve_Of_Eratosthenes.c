@@ -22,6 +22,24 @@ void SieveOfEratosthenes(int n)
     }
     printf("\n");
 }
+char *isPrime(int n)
+{
+    if (n <= 1)  
+    	return "False";
+    if (n <= 3)  
+    	return "True";
+
+    if (n%2 == 0 || n%3 == 0) 
+    	return "False";
+ 
+    for (int i=5; i*i<=n; i=i+6)
+    {
+        if (n%i == 0 || n%(i+2) == 0)
+           return "False";
+    }
+ 
+    return "True";
+}
 int main()
 {
     int n;
