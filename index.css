@@ -1,12 +1,17 @@
-body{
+/*body{
     margin:0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: rgb(199, 199, 255);
+    background-color: 'white';
     height:100%;
     width:100%;
 }
 
-
+h1.title{
+    font-size: 3.7em;
+    max-width: 80%;
+    margin-left:auto;
+    margin-right: auto;
+}
 .row1{
     width:90%;
     position: relative;
@@ -35,10 +40,11 @@ body{
     left: 0;
     transition:1s;
     position: absolute;
-    background-color: red;
+    background-color: rgb(61, 111, 218);
     float: left;
     margin:2.5%;
-
+    overflow: hidden;
+    text-align: center;
 }
 
 .right{
@@ -46,21 +52,36 @@ body{
     transition:1s;
     right:0;
     margin:2.5%;
-    background-color: rgb(255, 0, 157);
+    background-color: rgb(61, 111, 218);
+    /*    background-color: rgb(255, 0, 157);
+    text-align: center;
     overflow: hidden;
 }
 
 
 .left:hover{
-    height:auto;
-}
-
-.right:hover{
-    height:500px;
+    height:450px;
     line-height: 150px;
     overflow-y: scroll;
 }
 
+.right:hover{
+    height:450px;
+    line-height: 150px;
+    overflow-y: scroll;
+}
+
+ul{
+    margin:0;
+    padding:10px;
+    word-wrap: break-word;
+}
+li{
+    line-height: auto;
+    list-style-type: none;
+    padding:0;
+    margin:0;
+}
 .bottom{
     width:100%;
     background-color: green;
@@ -78,7 +99,36 @@ a{
     color:white;
     text-decoration: none;
     width:auto;
-    background-color: red;
+    background-color: green;
     padding: 10px;
     margin: 20px;
+}
+
+@media only screen and (max-width: 600px){
+    h1.title{
+        font-size:2em;
+    }
+
+    .top{
+        height:100px;
+        line-height: 100px;
+        font-size: 1em;
+    }
+    li{
+        font-size: 0.75em;
+        line-height: auto;
+        padding:0;
+        margin:auto;
+        
+    }
+    ul{
+        padding:0;
+        margin:0;
+    }
+
+}*/
+
+.hover:hover{
+    box-shadow: 0 2px 4px rgba(43, 43, 43, 0.63);
+    cursor: pointer;
 }
