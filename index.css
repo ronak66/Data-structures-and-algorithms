@@ -1,3 +1,4 @@
 .hover:hover{
-    box-shadow: 0 2px 4px rgba(39, 39, 39, 0.575);
+    box-shadow: 0 2px 4px rgba(43, 43, 43, 0.63);
+    cursor: pointer;
 }
