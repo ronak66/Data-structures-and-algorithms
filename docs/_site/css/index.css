@@ -2,3 +2,49 @@
     box-shadow: 0 2px 4px rgba(43, 43, 43, 0.63);
     cursor: pointer;
 }
+
+.carousel-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    /* background-color: green; */
+    height: 100%;
+    /* max-width: 70%;  */
+}
+
+.carousel-title{
+    font-size: 3rem;
+    color: white;
+    align-self: center;
+    /* background: red; */
+}
+.carousel-cell {
+    width: 100%; /* full width */
+    height: 400px; /* height of carousel */
+    background: rgb(91, 91, 252);
+    justify-content: center;
+}
+
+  .bar{
+    border-radius: 10px;
+    min-height: 100px;
+    /* background-color: green; */
+    margin:20px;
+    padding:15px;
+    transition:0.4s;
+    border: 2px solid rgb(182, 182, 182);
+}
+
+.bar:hover{
+    transform: scale(1.005);
+    box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.37);
+}
+
+.bar-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    /* background-color: red; */
+    /* display: inline;? */
+}
