@@ -7,6 +7,7 @@ struct node
 	struct node *next;
 };
 
+// Adding an element to the stack
 void Push(struct node **head,int key)
 {
 	struct node *temp;
@@ -18,26 +19,31 @@ void Push(struct node **head,int key)
 	{
 		temp->next = (*head);
 		(*head) = temp;
-	}	
+	}
 }
+
+// Deleting an element from the stack
 void Pop(struct node **head)
 {
 	(*head) = (*head)->next;
 }
+
 struct node *last(struct node *head)
-{	
+{
 	while(head->next != NULL)
 		head = head->next;
 	return head;
 }
+
 void print(struct node *head)
 {
+    printf("begginning: ");
 	while(head != NULL)
 	{
 		printf("%d -> ",head->data);
 		head = head->next;
 	}
-	printf("\n");
+	printf("Null :end\n");
 }
 
 int main()
@@ -52,7 +58,6 @@ int main()
 	print(head);
 	Pop(&head);
 	print(head);
-
 
 	return 0;
 }

@@ -6,6 +6,8 @@ struct node
 	int data;
 	struct node* next;
 };
+
+// Adding an element to the Queue
 void Enqueue(struct node **head,struct node **tail,int key)
 {
 	struct node *temp;
@@ -23,20 +25,24 @@ void Enqueue(struct node **head,struct node **tail,int key)
 	}
 
 }
+
+// Deleting an element from the queue
 void Dequeue(struct node **head)
 {
 	(*head) = (*head)->next;
 }
+
 void print(struct node *head)
 {
  	while(head != NULL)
 	{
 		printf("%d -> ",head->data);
 		head = head->next;
-		
+
 	}
 	printf("\n");
 }
+
 int main()
 {
 	struct node *head,*tail;

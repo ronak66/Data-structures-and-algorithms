@@ -30,6 +30,7 @@ title : Stacks
             <li><b>push()</b> function is used to insert a new element in the stack</li>
             <li><b>pop()</b> fuction is used to remove an element from the stack</li>
             <li>Both insertion and removal are allowed at only one end of Stack called Top</li>
+            <li>Both insertion and removal are of order O(1) and serching is of order O(n)</li>
             <li>Stack is said to be overflow state when it is completely full</li>
         </ul>
 
@@ -38,7 +39,7 @@ title : Stacks
         <!-- <div style="background-color: #333; color: white;"> -->
         <pre><code style="border-radius: 25px;">
 
-            //In structures, we add at the beginning and delete at the beginning
+            //In stacks, we add at the beginning and delete at the beginning
             #include<stdio.h>
             #include<stdlib.h>
             struct node
@@ -77,17 +78,17 @@ title : Stacks
 
             void print(struct node *head)
             {
+                printf("beginning: ")
             	while(head != NULL)
             	{
             		printf("%d -> ",head->data);
             		head = head->next;
             	}
-            	printf("\n");
+            	printf("Null :end\n");
             }
 
             int main()
             {
-            	int b[4];
             	struct node *head;
             	Push(&head,1);
             	Push(&head,2);
