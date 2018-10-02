@@ -16,105 +16,182 @@
 
 <body>
         <div class="heading">
-        <span class="title">Queue</span>
+        <span class="title">Queue using two Stacks</span>
         <br>
     </div>
 
     <div class="content">
-        <h1>What is Queue?</h1>
+        <h1>How ?</h1>
         <br>
-        <img src="../../assets/queue.png" class="banner">
+        <img src="../../../assets/queue_using_two_stacks.png" class="banner">
 
         <p>
-            A queue is an linear data structure, commonly used in most of the programming languages. It follow a paticular
-            order in which operations are performed. It allows adding and removing elements in a particular order. Every
-            time an element is added it goes at the beginning of the queue, and only element that can be removed is the element
-            that is at the end of the queue.<br />
-            Good example of a queue is a queue of customers in a supermarket's billing counter, where the customer
-            that came first are served first.<br />
-            The only difference between <a href="/data-structures/stack/">stacks</a> and queues is in removing. In stacks
-            we only remove element that is at the beginning whereas in queues we only remove element that is at the end.
-        </p>
-        <h1>Features</h1>
+            To create a queue by only using stacks, you will require two stack data strutures (Stack1 and Stack2 ).
+            Where enqueue and dequeue are defined as:<br />
+            <b>Enqueue(x) :</b> Push <b>x</b> into stack1 <br />
+            <b>Dequeue() &ensp;:</b> If stack2 is empty, then we pop the entire contents of stack1 and push it into stack2. Now
+            simply pop from &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;stack2 and return the result.<br />
+            If you are thinking Dequeue() function is costlier than normal queue's dequeue implementation, than you are wrong.
+            The time complexity of Dequeue() is not <b>O(n)</b>. <a>Amortized Complexity</a> is still <b>O(1)</b> for Enqueue
+            as well as Dequeue. This implementation of queue is <b>not</b> inefficient compared to normal queue implementation.
 
-        <ul>
-            <li>Queue is ordered list</li>
-            <li>It follows <b>FIFO</b> (First In First Out) or <b>LILO</b> (Last In Last Out) order</li>
-            <li><b>enqueue()</b> function is used to insert a new element in the stack</li>
-            <li><b>dequeue()</b> fuction is used to remove an element from the stack</li>
-            <li>Both insertion and removal are of order <b>O(1)</b> and searching is of order <b>O(n)</b></li>
-        </ul>
+
+        </p>
 
         <h1>Implementation</h1>
         <pre><code style="border-radius: 25px;">
-            //In Queue, you add at the end and delete at the beginning
+            // Program to implement a queue using two stacks
             #include<stdio.h>
             #include<stdlib.h>
-            struct node
+
+            // structure of a stack node
+            struct sNode
             {
-            	int data;
-            	struct node* next;
+                int data;
+                struct sNode *next;
+                int min;
             };
 
-            // Adding an element to the Queue
-            void Enqueue(struct node **head,struct node **tail,int key)
+            // structure of queue having two stacks
+            struct queue
             {
-            	struct node *temp;
-            	temp = malloc(sizeof(struct node));
-            	temp->data = key;
-            	if((*head) == NULL)
-            	{
-            		(*tail) = temp;
-            		(*head) = temp;
-            	}
-            	else
-            	{
-            		(*tail)->next = temp;
-            		(*tail) = temp;
-            	}
+                struct sNode *stack1;
+                struct sNode *stack2;
+            };
 
+            // Function to enqueue an item to queue
+            void enQueue(struct queue *q, int x)
+            {
+                push(&q->stack1, x);
             }
 
-            // Deleting an element from the queue
-            void Dequeue(struct node **head)
+            // Function to dequeue an item from queue
+            int deQueue(struct queue *q)
             {
-            	(*head) = (*head)->next;
+                int x;
+                // If both stacks are empty then error
+                if(q->stack1 == NULL && q->stack2 == NULL)
+                {
+                    printf("Q is empty");
+                    getchar();
+                    exit(0);
+                }
+
+                // Move elements from satck1 to stack 2 only if stack2 is empty
+                if(q->stack2 == NULL)
+                {
+                    while(q->stack1 != NULL)
+                    {
+                        x = pop(&q->stack1);
+                        push(&q->stack2, x);
+
+                    }
+                }
+
+                x = pop(&q->stack2);
+                return x;
             }
 
-            void print(struct node *head)
+            // Function to push an item to stack
+            void push(struct sNode** top_ref, int new_data)
             {
-             	while(head != NULL)
-            	{
-            		printf("%d -> ",head->data);
-            		head = head->next;
+                struct sNode* new_node = (struct sNode*) malloc(sizeof(struct sNode));
+                if(new_node == NULL)
+                {
+                    printf("Stack overflow \n");
+                    getchar();
+                    exit(0);
 
-            	}
-            	printf("\n");
+                }
+                if((*top_ref)==NULL)
+                {
+                    new_node->min=new_data;
+                }
+                else
+                {
+                    if((*top_ref)->min > new_data)
+                        new_node->min=new_data;
+                    else
+                        new_node->min=(*top_ref)->min;
+                }
+                new_node->data = new_data;
+                new_node->next = (*top_ref);
+                (*top_ref) = new_node;
+            }
+
+            //Function to pop an item from stack
+            int pop(struct sNode** top_ref)
+            {
+                int res;
+                struct sNode *top;
+
+                //If stack is empty then error
+                if(*top_ref == NULL)
+                {
+                    printf("Stack overflow \n");
+                    getchar();
+                    exit(0);
+
+                }
+                else
+                {
+                    top = *top_ref;
+                    res = top->data;
+                    *top_ref = top->next;
+                    free(top);
+                    return res;
+
+                }
+            }
+
+            int get_Min(struct queue *q)
+            {
+                if(q->stack1==NULL && q->stack2==NULL)
+                    return -1;
+                if(q->stack1==NULL)
+                {
+                    return q->stack2->min;
+                }
+                else if(q->stack2==NULL)
+                {
+                    return q->stack1->min;
+                }
+                else
+                {
+                    if(q->stack1->min > q->stack2->min)
+                        return q->stack2->min;
+                    else
+                        return q->stack1->min;
+                }
             }
 
             int main()
             {
-            	struct node *head,*tail;
-            	head = NULL;
-            	tail = NULL;
-            	Enqueue(&head,&tail,1);
-            	Enqueue(&head,&tail,2);
-            	Enqueue(&head,&tail,3);
-            	Enqueue(&head,&tail,4);
-            	Enqueue(&head,&tail,5);
-            	print(head);
-            	Dequeue(&head);
-            	print(head);
+                struct queue *q = (struct queue*)malloc(sizeof(struct queue));
+                q->stack1 = NULL;
+                q->stack2 = NULL;
+                enQueue(q, 2);
+                enQueue(q, 1);
+                printf("min = %d\n",get_Min(q));
+                enQueue(q, 0);
+                printf("min = %d\n",get_Min(q));
 
-            	return 0;
+                printf("%d ", deQueue(q));
+                printf("%d ", deQueue(q));
+                printf("min = %d\n",get_Min(q));
+                printf("%d ", deQueue(q));
+
             }
 
         </pre></code>
-
+        <br />
+        <h1>Use</h1>
         <p>
-            Here there are two pointers, one pointing to the beginning of the queue and another pointing at the end of the
-            queue. Queue can be formed using two stacks. Check it out how <a href="/data-structures/queue/queue-using-two-
-            stacks">here</a>
+            You would be thinking how is queue created using two stacks better than normal Implementation of queue, and you
+            are right. In practical usage it is not efficient and approporiate to use queue implementation by two Stacks
+            but it is very useful when you are implementing system in constrained enviroment that weren't designed for it.
+            It is also a good brain exercise to come up with an alogrithm to create a queue using only stacks (Which is one of
+            the reason beginners are given this problem) .
         </p>
 
     </div>
