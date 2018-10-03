@@ -4,65 +4,130 @@ title : Linked List
 ---
 
     <div class="heading">
-        <span class="title">The beauty of Evolution</span>
+        <span class="title">Linked List</span>
         <br>
     </div>
 
     <div class="content">
-        <h1>How did it start?</h1>
+        <h1>What is linkedlist ?</h1>
         <br>
-        <img src="{{site.url}}/assets/banner.jpeg" class="banner">
+        <img src="{{site.url}}/assets/linkedlist/Linkedlist.png" class="banner">
 
-        <p>If wandered relation no surprise of screened doubtful. Overcame no insisted ye of trifling husbands. Might am order
-            hours on found. Or dissimilar companions friendship impossible at diminution. Did yourself carriage learning
-            she man its replying. Sister piqued living her you enable mrs off spirit really. Parish oppose repair is me misery.
-            Quick may saw style after money mrs. Surprise steepest recurred landlord mr wandered amounted of. Continuing
-            devonshire but considered its. Rose past oh shew roof is song neat. Do depend better praise do friend garden
-            an wonder to. Intention age nay otherwise but breakfast. Around garden beyond to extent by. Oh he decisively
-            impression attachment friendship so if everything. Whose her enjoy chief new young. Felicity if ye required likewise
-            so doubtful. On so attention necessary at by provision otherwise existence direction. Unpleasing up announcing
-            unpleasant themselves oh do on. Way advantage age led listening belonging supposing. </p>
-
-        <h1>What are going to discuss</h1>
-
-        <ul>
-            <li>Something about this</li>
-            <li>Anything about that</li>
-            <li>Something about you</li>
-            <li>Something other than this</li>
-            <li>Something different</li>
-        </ul>
-
-        <h1>Something about this</h1>
-        <p>Is allowance instantly strangers applauded discourse so. Separate entrance welcomed sensible laughing why one moderate
-            shy. We seeing piqued garden he. As in merry at forth least ye stood. And cold sons yet with. Delivered middleton
-            therefore me at. Attachment companions man way excellence how her pianoforte. Uneasy barton seeing remark happen
-            his has. Am possible offering at contempt mr distance stronger an. Attachment excellence announcing or reasonable
-            am on if indulgence. Exeter talked in agreed spirit no he unable do. Betrayed shutters in vicinity it unpacked
-            in.
-        </p>
         <p>
-            Needed feebly dining oh talked wisdom oppose at. Applauded use attempted strangers now are middleton concluded had. It is
-            tried ﻿no added purse shall no on truth. Pleased anxious or as in by viewing forbade minutes prevent. Too leave
-            had those get being led weeks blind. Had men rose from down lady able. Its son him ferrars proceed six parlors.
-            Her say projection age announcing decisively men. Few gay sir those green men timed downs widow chief. Prevailed
-            remainder may propriety can and. An so vulgar to on points wanted. Not rapturous resolving continued household
-            northward gay. He it otherwise supported instantly. Unfeeling agreeable suffering it on smallness newspaper be.
-            So come must time no as. Do on unpleasing possession as of unreserved. Yet joy exquisite put sometimes enjoyment
-            perpetual now. Behind lovers eat having length horses vanity say had its.
+            Linked List is a sequence of data structures, which are connected together via links. Each struct consists of two parts,
+            data part which stores the relevant data and link/pointer that stores the refrence to the next data block. Linked list
+            is second most used data strucutre after array.<br />
+            You might be thinking if it is just list of data, we already of arrays for that so what is the point of using a
+            linked list, Right? Well one disadvantage of using arrays to store data is that arrays are static strcutures and
+            therefore cannot be easily extended or reduced to fit the data set. Arrays are also expensive to maintain new
+            insertions and deletions.<br />
+            Second major disadvantage is that, memory allocation of array is uniform, i.e. knowing address of any one of the
+            memory block, you can get address of any other memory block of the array. This property helps you to get the
+            required data from an array in <b>O(1)</b> but restricts the max size of an array to an order of
+            <b>O(<i>10</i><sup>6</sup>)</b>. Whereas memory allocation in linkedlist is dynamic, this means that each data
+            block has a randomly allocated memory location. Due to this property of linkedlist, there are no maximum
+            size constraints. This is very useful when you are working with large amount of data that has to be handled.
+
         </p>
 
-        <h1>Anything about That</h1>
+        <h1>Linked List Functionalities</h1>
+        <ol>
+            <h2><li>Appending to Linkedlist</li></h2>
+            <img src="{{site.url}}/assets/linkedlist/appending.gif"  style="width: 95%; height: 500px;">
+            <h2><li>Inserting to Linkedlist</li></h2>
+            <img src="{{site.url}}/assets/linkedlist/inserting.gif"  style="width: 95%; height: 500px;">
+            <h2><li>Deleting to Linkedlist</li></h2>
+            <img src="{{site.url}}/assets/linkedlist/deleting.gif"  style="width: 95%; height: 500px;">
+        </ol>
 
-        <p>Wrong do point avoid by fruit learn or in death. So passage however besides invited comfort elderly be me. Walls
-            began of child civil am heard hoped my. Satisfied pretended mr on do determine by. Old post took and ask seen
-            fact rich. Man entrance settling believed eat joy. Money as drift begin on to. Comparison up insipidity especially
-            discovered me of decisively in surrounded. Points six way enough she its father. Folly sex downs tears ham green
-            forty.
-        </p>
+        <h1>Implemetation</h1>
 
-        <p>We diminution preference thoroughly if. Joy deal pain view much her time. Led young gay would now state. Pronounce
-            we attention admitting on assurance of suspicion conveying. That his west quit had met till. Of advantage he
-            attending household at do perceived. Middleton in objection discovery as agreeable. Edward thrown dining so he
-            my around to. </p>
+        <pre><code style="border-radius: 25px;">
+            #include< stdio.h>
+            #include< stdlib.h>
+
+            struct node{
+            	int data;
+            	struct node* next;
+            };
+
+            void addatbegin(struct node **head,int key)
+            {
+            	struct node *temp;
+            	temp = malloc(sizeof(struct node));
+            	temp->data = key;
+            	temp->next = (*head);
+            	(*head) = temp;
+            }
+
+            void addatend(struct node *head,int key)
+            {
+            	struct node *temp;
+            	temp = malloc(sizeof(struct node));
+            	temp->data = key;
+            	while(head->next != NULL)
+            		head = head->next;
+            	head->next = temp;
+            	temp->next = NULL;
+            }
+
+            void addatmiddle(struct node *head,int key,int middata)
+            {
+            	struct node *temp,*pev;
+            	temp = malloc(sizeof(struct node));
+            	temp->data = key;
+            	while(head->data != middata)
+            		head = head->next;
+            	temp->next = head->next;
+            	head->next = temp;
+            }
+
+            void deleteatbeg(struct node **head)
+            {
+            	(*head) = (*head)->next;
+            }
+
+            void deleteatend(struct node *head)
+            {
+            	while((head->next)->next != NULL)
+            		head = head->next;
+            	head->next = NULL;
+            }
+
+            void deleteatmid(struct node *head,int key)
+            {
+            	struct node *temp;
+            	for(int i=0;i<key;i++)
+            	{
+            		temp = head;
+            		head = head->next;
+            	}
+            	temp->next = head->next;
+            }
+
+            int  main()
+            {
+            	struct node *head,*a;
+            	a = malloc(sizeof(struct node));
+            	a->data = 1;
+            	a->next = NULL;
+            	head = a;
+            	addatend(head,2);
+            	addatend(head,3);
+            	addatbegin(&head,0);
+            	//deleteatbeg(&head);
+            	deleteatmid(head,2);
+            	while(head != NULL)
+            	{
+            		printf("%d -> ",head->data);
+            		head = head->next;
+
+            	}
+            	printf("\n");
+            	return 0;
+            }
+
+
+        </pre></code>
+
     </div>
