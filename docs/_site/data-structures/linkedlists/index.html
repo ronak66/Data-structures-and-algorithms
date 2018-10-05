@@ -30,8 +30,9 @@
             Linked List is a sequence of data structures, which are connected together via links. Each struct consists of two parts,
             data part which stores the relevant data and link/pointer that stores the refrence to the next data block. Linked list
             is second most used data strucutre after array.<br />
-            You might be thinking if it is just list of data, we already of arrays for that so what is the point of using a
-            linked list, Right? Well one disadvantage of using arrays to store data is that arrays are static strcutures and
+            You might be thinking if it is just list of data, we already have arrays for that so what is the point of using a
+            linked list, Right? <br />
+            Well one disadvantage of using arrays to store data is that arrays are static strcutures and
             therefore cannot be easily extended or reduced to fit the data set. Arrays are also expensive to maintain new
             insertions and deletions.<br />
             Second major disadvantage is that, memory allocation of array is uniform, i.e. knowing address of any one of the
@@ -56,89 +57,94 @@
         <h1>Implemetation</h1>
 
         <pre><code style="border-radius: 25px;">
-            #include< stdio.h>
-            #include< stdlib.h>
+        #include< stdio.h>
+        #include< stdlib.h>
 
-            struct node{
-            	int data;
-            	struct node* next;
-            };
+        struct node{
+        	int data;
+        	struct node* next;
+        };
 
-            void addatbegin(struct node **head,int key)
-            {
-            	struct node *temp;
-            	temp = malloc(sizeof(struct node));
-            	temp->data = key;
-            	temp->next = (*head);
-            	(*head) = temp;
-            }
+        void addatbegin(struct node **head,int key)
+        {
+        	struct node *temp;
+        	temp = malloc(sizeof(struct node));
+        	temp->data = key;
+        	temp->next = (*head);
+        	(*head) = temp;
+        }
 
-            void addatend(struct node *head,int key)
-            {
-            	struct node *temp;
-            	temp = malloc(sizeof(struct node));
-            	temp->data = key;
-            	while(head->next != NULL)
-            		head = head->next;
-            	head->next = temp;
-            	temp->next = NULL;
-            }
+        void addatend(struct node *head,int key)
+        {
+        	struct node *temp;
+        	temp = malloc(sizeof(struct node));
+        	temp->data = key;
+        	while(head->next != NULL)
+        		head = head->next;
+        	head->next = temp;
+        	temp->next = NULL;
+        }
 
-            void addatmiddle(struct node *head,int key,int middata)
-            {
-            	struct node *temp,*pev;
-            	temp = malloc(sizeof(struct node));
-            	temp->data = key;
-            	while(head->data != middata)
-            		head = head->next;
-            	temp->next = head->next;
-            	head->next = temp;
-            }
+        void addatmiddle(struct node *head,int key,int middata)
+        {
+        	struct node *temp,*pev;
+        	temp = malloc(sizeof(struct node));
+        	temp->data = key;
+        	while(head->data != middata)
+        		head = head->next;
+        	temp->next = head->next;
+        	head->next = temp;
+        }
 
-            void deleteatbeg(struct node **head)
-            {
-            	(*head) = (*head)->next;
-            }
+        void deleteatbeg(struct node **head)
+        {
+        	(*head) = (*head)->next;
+        }
 
-            void deleteatend(struct node *head)
-            {
-            	while((head->next)->next != NULL)
-            		head = head->next;
-            	head->next = NULL;
-            }
+        void deleteatend(struct node *head)
+        {
+        	while((head->next)->next != NULL)
+        		head = head->next;
+        	head->next = NULL;
+        }
 
-            void deleteatmid(struct node *head,int key)
-            {
-            	struct node *temp;
-            	for(int i=0;i<key;i++)
-            	{
-            		temp = head;
-            		head = head->next;
-            	}
-            	temp->next = head->next;
-            }
+        void deleteatmid(struct node *head,int key)
+        {
+        	struct node *temp;
+        	for(int i=0;i<key;i++)
+        	{
+        		temp = head;
+        		head = head->next;
+        	}
+        	temp->next = head->next;
+        }
 
-            int  main()
-            {
-            	struct node *head,*a;
-            	a = malloc(sizeof(struct node));
-            	a->data = 1;
-            	a->next = NULL;
-            	head = a;
-            	addatend(head,2);
-            	addatend(head,3);
-            	addatbegin(&head,0);
-            	//deleteatbeg(&head);
-            	deleteatmid(head,2);
-            	while(head != NULL)
-            	{
-            		printf("%d -> ",head->data);
-            		head = head->next;
+        void print(struct node* head)
+        {
+            while(head != NULL)
+        	{
+        		printf("%d -> ",head->data);
+        		head = head->next;
 
-            	}
-            	printf("\n");
-            	return 0;
-            }
+        	}
+        	printf("\n");
+        }
+
+        int  main()
+        {
+        	struct node *head,*a;
+        	a = malloc(sizeof(struct node));
+        	a->data = 1;
+        	a->next = NULL;
+        	head = a;
+        	addatend(head,2);
+        	addatend(head,3);
+        	addatbegin(&head,0);
+        	//deleteatbeg(&head);
+        	deleteatmid(head,2);
+        	print(head);
+        	return 0;
+        }
 
 
         </pre></code>

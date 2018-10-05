@@ -57,6 +57,17 @@ void deleteatmid(struct node *head,int key)
 	}
 	temp->next = head->next;
 }
+
+void print(struct node* head)
+{
+	while(head != NULL)
+	{
+		printf("%d -> ",head->data);
+		head = head->next;
+
+	}
+	printf("\n");
+}
 int  main()
 {
 	struct node *head,*a;
@@ -69,12 +80,6 @@ int  main()
 	addatbegin(&head,0);
 	//deleteatbeg(&head);
 	deleteatmid(head,2);
-	while(head != NULL)
-	{
-		printf("%d -> ",head->data);
-		head = head->next;
-
-	}
-	printf("\n");
+	print(head);
 	return 0;
 }
