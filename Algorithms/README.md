@@ -36,5 +36,5 @@
 	**2.** 	If **a** is not divisible by **p**, than &nbsp;
 		**(a^(p-1))%p == 1**  
 	 
-8. 	Any Ppime number can be written in the format **6N+1** OR **6N-1**
+8. 	Any Prime number can be written in the format **6N+1** OR **6N-1**
 
