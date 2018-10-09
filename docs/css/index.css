@@ -18,6 +18,8 @@
     font-size: 3rem;
     color: white;
     align-self: center;
+    padding:1rem;
+    text-align: center;
     /* background: red; */
 }
 .carousel-cell {
