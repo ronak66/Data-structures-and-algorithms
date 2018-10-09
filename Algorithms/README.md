@@ -2,7 +2,7 @@
 
 ## Number Theory
 
-1. 	**n** is in the Fibonacci sequence if, **5(n^2) + 4** or **5(n^2) - 4** or if both are perferct squares
+1. 	**n** is in the Fibonacci sequence if, **5(n^2) + 4** or **5(n^2) - 4** or if both are perfect squares
 
 2. 	**(a+b)%m = (a%m + b%m)%m**
 
