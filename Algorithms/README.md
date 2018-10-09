@@ -1,8 +1,8 @@
-# Competitive Programming Helpfull concepts
+# Helpful Concepts for Competetive Programming!
 
 ## Number Theory
 
-1. 	**n** is in Fibinacci Sequence if, **5(n^2) + 4** or **5(n^2) - 4** or both are perferct squaree
+1. 	**n** is in the Fibonacci sequence if, **5(n^2) + 4** or **5(n^2) - 4** or if both are perferct squares
 
 2. 	**(a+b)%m = (a%m + b%m)%m**
 
@@ -11,7 +11,7 @@
 
 4. 	**(ab)%m = (a%m * b%m)%m**
  
-5. 	A Year is called Leap Year if:  
+5. 	A year is a leap year if:  
 	*	 Year is divisible by 400  
 	*	 OR Year is divisible by 4 but not by 100
 
@@ -30,11 +30,11 @@
    	}
 8. 	LCM(a,b) = (a*b)/GCD(a,b)
 9. 	For an odd prime **p**,&nbsp; **(2^k)%p == 1** if and only of &nbsp; **(k)%(p-1) == 0**  
-	> #### Fermant's little theorm :
+	> #### Fermat's Little Theorem :
 	**1.** 	If **p** is a prime number and **a** is any integer, than &nbsp;
 		**(a^p)%p == a**, i.e &nbsp; **((a^p)-a)%p == 0**  
 	**2.** 	If **a** is not divisible by **p**, than &nbsp;
 		**(a^(p-1))%p == 1**  
 	 
-8. 	Any Prime number can be writern in format **6N+1** OR **6N-1**
+8. 	Any Ppime number can be written in the format **6N+1** OR **6N-1**
 
