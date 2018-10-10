@@ -2,4 +2,16 @@
 layout : skeleton
 title : data-structres
 ---
-<h1>Data-structures</h1>
+
+{% include navbar.html %}
+
+<h1 class="page-title">Data-structures</h1>
+
+<div class="grids" data-masonry='{ "itemSelector": ".grid-item", "gutter" : 5 , "columnWidth": 1}'>
+    <a href="{{site.url}}/data-structures/linkedlists"><div class="grid-item ll">Linked List</div></a>
+    <a href="{{site.url}}/data-structures/stack"><div class="grid-item st">Stack</div></a>
+    <a href="{{site.url}}/data-structures/queue"><div class="grid-item qu">Queue</div></a>
+    <a href="{{site.url}}/data-structures/hashtable"><div class="grid-item ht">Hash Table</div></a>
+    <a href="{{site.url}}/data-structures/heaps"><div class="grid-item he">Heaps</div></a>
+    <a href="{{site.url}}/data-structures/trees"><div class="grid-item tr">Trees</div></a>
+</div>
