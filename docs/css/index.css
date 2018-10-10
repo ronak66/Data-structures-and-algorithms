@@ -54,5 +54,70 @@
 }
 
 .page-title{
+    text-align: center;
+    margin: 4rem 0;
+}
+
+.grids{
+    /* width:80%; */
+    /* background-color: rgb(221, 221, 221); */
+    margin:1rem auto;
+    width: 75%;
+}
+
+@media only screen and (max-width : 700px) {
+    .grids{
+        width:95%;
+    }
+}
+
+.grid-item{
+    background-color: rgb(255, 77, 77);
     font-family: 'Poppins', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    width:200px;
+    height: 200px;
+    margin: 0.15rem;
+    border-radius: 4px;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.grid-item.ll{
+    background-color: rgb(68, 184, 73);
+    width: 300px;
+    height: 200px;
+    /* width:50%; */
+
+}
+
+.grid-item.qu{
+    width:300px;
+    height: 200px;
+    background-color: blue;
+}
+
+.grid-item.st{
+    width: 300px;
+    background-color: rgb(255, 77, 77);
+}
+
+.grid-item.tr{
+    width: 300px;
+    background-color: rgb(128, 0, 90);
+}
+
+.grid-item.he{
+    width: 300px;
+    background-color: rgb(18, 134, 105);
+}
+
+.grid-item.ht{
+    background-color: rgb(106, 34, 124);
+    width: 300px;
+    height: 200px;
 }
