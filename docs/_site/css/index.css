@@ -35,8 +35,10 @@
     /* background-color: green; */
     margin:20px;
     padding:15px;
+    color: black;
     transition:0.4s;
     border: 2px solid rgb(182, 182, 182);
+    cursor: pointer;
 }
 
 .bar:hover{
@@ -49,4 +51,8 @@
     font-weight: bold;
     /* background-color: red; */
     /* display: inline;? */
+}
+
+.page-title{
+    font-family: 'Poppins', sans-serif;
 }
