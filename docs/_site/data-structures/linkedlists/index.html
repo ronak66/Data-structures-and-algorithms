@@ -54,30 +54,9 @@
             <img src="http://localhost:4000/assets/linkedlist/deleting.gif"  style="width: 95%; height: 500px;">
         </ol>
 
-        <script>
-            SEC_HTTPS = true;
-            SEC_BASE = "compilers.widgets.sphere-engine.com"; 
-            (function(d, s, id){ SEC = window.SEC || (window.SEC = []);
-              var js, fjs = d.getElementsByTagName(s)[0];
-              if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; 
-              js.src = (SEC_HTTPS ? "https" : "http") + "://" + SEC_BASE + "/static/sdk/sdk.js";
-              fjs.parentNode.insertBefore(js, fjs);   
-            }(document, "script", "sphere-engine-compilers-jssdk"));
-            SEC.ready=function(e){"loading"!=document.readyState&&"interactive"!=document.readyState?e():window.addEventListener("load",e)};
-        </script>
-       
         <h1>Implemetation</h1>
-        <div style="height: 500px">
-            <div data-id="sec-widget" data-widget="1ff6ad793b52a617ca440adb76c34533"></div>
-            <script>
-                SEC.ready(function() {
-                    var sourceCode = document.getElementById("code").innerText;
-                    var SECWidget = SEC.widget("sec-widget");
-                    SECWidget.loadCode(11, sourceCode, "");
-                });
-            </script>
-        </div>
-        <pre><code style="border-radius: 25px;" id="code">
+
+        <pre><code style="border-radius: 25px;">
         #include< stdio.h>
         #include< stdlib.h>
 
