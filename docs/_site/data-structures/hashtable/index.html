@@ -26,9 +26,79 @@
         <br>
         <img src="http://localhost:4000/assets/hashtable.jpg" class="banner">
 
+<<<<<<< Updated upstream
         <p>
 
         </p>
+=======
+        <p>
+            HashTable is a data structure which stores data in an associative manner. HashTable is quite similar
+            to a dictionary (key-value structure), where each data that needs to be stored is given a specific
+            key, and the corresponding data can be accessed using that key. HashTable is therefore implemented
+            as an array, where the indices represent the key and the data stored at that index of the array
+            represents the value.<br />
+            The only problem here is that an array can have maximum size is of order <b>O(<i>10</i><sup>6</sup>)</b>.
+            So when number of data points are more than the maximum size of an array, collisions will occur,
+            i.e. more than one data points will have same key and can't be stored in the array.<br />
+            To overcome the above problem, we make hashtable as an array of
+            <a href="http://localhost:4000/data-structures/linkedlists/" >linkedList</a>. So when ever we encounter a collision,
+            we just append the data point into the linkedlist.<br />
+            Ultimately hashtable is just a dictonary with capability to handle colission.
+        </p>
+
+        <h1>Hashing</h1>
+        <p>
+            As we discussed earlier, HashTable is an array of linkedlist where the index represents key. Question
+            is how is a key for given data point defined?<br />
+            This is where hashing comes into picture. Hashing is a function or a method which takes in data and
+            returns a value which is got by doing some computation on that data. To make it more clear let me
+            give an example :<br />
+        </p>
+        <ul>
+        <div>
+            <li style="font-family: Monospace"><h1>Integer Hashing</h1></li>
+            <p>
+            If data is an Integer, than the key is the data itself, i.e. if you want to find whether there is
+            '2' in the hashtable all you need to do is check the linkedlist at index '2' (2 is the key as well
+            as the value). Problem with this hashing algorithm is that for integer with value more than the order
+            <b>O(<i>10</i><sup>6</sup>)</b> then you can't store it, hence we modify the hashing algorithm by returning
+            integer modulo 'm' (integer%m) where 'm' is the size of the hashtable array. By adding this small change to
+            the algo, it will always return key that is less than 'm'.
+            </p>
+        </div>
+        <div>
+            <li style="font-family: Monospace"><h1>String Hashing</h1></li>
+            <p>
+            If data is a String, hashing algorithm can't be same as that of integer hashing algorithm as the string
+            can't be represented as index. Hence we need to come up with good hashing algorithm which has less probability
+            of collisions. The most prominent hashing algorithm used for strings is :<br />
+            Given a string 'str' of size 'n', we form a polynomial of the form<br />
+            <b>h(x) = (str[0])&nbsp;<i>x</i><sup>n-1</sup>&ensp; + &ensp;(str[1])&nbsp;<i>x</i><sup>n-2</sup>&ensp; + &ensp;
+                (str[2])&nbsp;<i>x</i><sup>n-3</sup> &ensp;+&ensp; ............ &ensp;+&ensp; (str[n-1])</b><br />
+            <b> h(x) = &Sigma;(&ensp;(str[i])&nbsp;<i>x</i><sup>n-1-i</sup>&ensp;)</b> &emsp;for : 0 &#8804; i < n
+            and x &Epsilon; R<br />
+            So for a given 'x', hash value of a string 'str' is defined like h(x) where str[i] is the ascii value of that
+            letter. For eg: if str="abc" and x=50, hash value of the string str will be: <br />
+            h(50) = (97)&nbsp;<i>50</i><sup>2</sup> &ensp;+&ensp;(98)&nbsp;<i>50</i><sup>1</sup> &ensp;+&ensp;99&ensp;=&ensp;247499
+            <br />
+            But even this hashing algorithm has the same problem that integer hashing algorithm faced. If the value of 'x' is big
+            or the length of the string is large, hash value of the string might become of an order more than
+            <b>O(<i>10</i><sup>6</sup>)</b>, due to which we can't store it. Hence solution is similar to that of integer hashing,
+            we modify the hash algorithm by returning h(x) modulo 'm' (h(x)%m) where 'm' is the size of the hashtable. With
+            this, hash value of a string will never be more than 'm'(size of the hash table) and we can store the string in the
+            hashtable at the index given by hash function.<br />
+            You might be thinking why are we making a polynomial and why did we chose this hash function over thousand others?<br />
+            To answer this question, we first need to know how to choose a hash function. As we already discused, there is 100%
+            guarantee of getting a collisions if we need to store number of data points that more than the maximum size of an array.
+            So we need to choose a hash function such that, probability of having same hash value for two different data points
+            is negligible.<br />
+
+
+            </p>
+        </div>
+
+    </ul>
+>>>>>>> Stashed changes
 
     </div>
 
