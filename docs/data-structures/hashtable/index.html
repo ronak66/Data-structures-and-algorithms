@@ -37,48 +37,198 @@ title : HashTable
             give an example :<br />
         </p>
         <ul>
-        <div>
-            <li style="font-family: Monospace"><h1>Integer Hashing</h1></li>
-            <p>
-            If data is an Integer, than the key is the data itself, i.e. if you want to find whether there is
-            '2' in the hashtable all you need to do is check the linkedlist at index '2' (2 is the key as well
-            as the value). Problem with this hashing algorithm is that for integer with value more than the order
-            <b>O(<i>10</i><sup>6</sup>)</b> then you can't store it, hence we modify the hashing algorithm by returning
-            integer modulo 'm' (integer%m) where 'm' is the size of the hashtable array. By adding this small change to
-            the algo, it will always return key that is less than 'm'.
-            </p>
+            <div>
+                <li style="font-family: Monospace"><h1>Integer Hashing</h1></li>
+                <p>
+                If data is an Integer, than the key is the data itself, i.e. if you want to find whether there is
+                '2' in the hashtable all you need to do is check the linkedlist at index '2' (2 is the key as well
+                as the value). Problem with this hashing algorithm is that for integer with value more than the order
+                <b>O(<i>10</i><sup>6</sup>)</b> then you can't store it, hence we modify the hashing algorithm by returning
+                integer modulo 'm' (integer%m) where 'm' is the size of the hashtable array. By adding this small change to
+                the algo, it will always return key that is less than 'm'.
+                </p>
+            </div>
+            <div>
+                <li style="font-family: Monospace"><h1>String Hashing</h1></li>
+                <p>
+                If data is a String, hashing algorithm can't be same as that of integer hashing algorithm as the string
+                can't be represented as index. Hence we need to come up with good hashing algorithm which has less probability
+                of collisions. The most prominent hashing algorithm used for strings is :<br />
+                Given a string 'str' of size 'n', we form a polynomial of the form<br /><br />
+                <b>h(x) = (str[0])&nbsp;<i>x</i><sup>n-1</sup>&ensp; + &ensp;(str[1])&nbsp;<i>x</i><sup>n-2</sup>&ensp; + &ensp;
+                    (str[2])&nbsp;<i>x</i><sup>n-3</sup> &ensp;+&ensp; ............ &ensp;+&ensp; (str[n-1])</b><br />
+                <b> h(x) = &Sigma;(&ensp;(str[i])&nbsp;<i>x</i><sup>n-1-i</sup>&ensp;)</b> &emsp;for : 0 &#8804; i < n
+                and x &Epsilon; R<br /><br />
+                So for a given 'x', hash value of a string 'str' is defined like h(x) where str[i] is the ascii value of that
+                letter. For eg: if str="abc" and x=50, hash value of the string str will be: <br /><br />
+                h(50) = (97)&nbsp;<i>50</i><sup>2</sup> &ensp;+&ensp;(98)&nbsp;<i>50</i><sup>1</sup> &ensp;+&ensp;99&ensp;=&ensp;247499
+                <br /><br />
+                But even this hashing algorithm has the same problem that integer hashing algorithm faced. If the value of 'x' is big
+                or the length of the string is large, hash value of the string might become of an order more than
+                <b>O(<i>10</i><sup>6</sup>)</b>, due to which we can't store it. Hence solution is similar to that of integer hashing,
+                we modify the hash algorithm by returning h(x) modulo 'm' (h(x)%m) where 'm' is the size of the hashtable. With
+                this, hash value of a string will never be more than 'm'(size of the hash table) and we can store the string in the
+                hashtable at the index given by hash function.<br />
+                You might be thinking why are we making a polynomial and why did we chose this hash function over thousand others?<br />
+                To answer this question, we first need to know how to choose a hash function. As we already discused, there is 100%
+                guarantee of getting a collisions if we need to store number of data points that more than the maximum size of an array.
+                So we need to choose a hash function such that, probability of having same hash value for two different data points
+                is negligible.<br />
+                And to achieve that, converting the string into a polynomial is the most efficient solution. If there are two polynomials<br><br />
+                F(x) = &nbsp;(&nbsp;a<sub>0</sub>&ensp; + &ensp;a<sub>1</sub>&nbsp;<i>x</i><sup>1</sup>&ensp; + &ensp;
+                        a<sub>2</sub>&nbsp;<i>x</i><sup>2</sup> &ensp;+&ensp; ............ &ensp;+&ensp; a<sub>n</sub>&nbsp;<i>x</i><sup>n</sup>&nbsp;)&nbsp;%m<br />
+                G(x) = &nbsp;(&nbsp;b<sub>0</sub>&ensp; + &ensp;b<sub>1</sub>&nbsp;<i>x</i><sup>1</sup>&ensp; + &ensp;
+                        b<sub>2</sub>&nbsp;<i>x</i><sup>2</sup> &ensp;+&ensp; ............ &ensp;+&ensp; b<sub>n</sub>&nbsp;<i>x</i><sup>n</sup>&nbsp;)&nbsp;%m<br /><br />
+                According to <a href="#"><b>Polynomial Theorm</b></a> : <br />
+                Probability(&nbsp;F(x<sub>i</sub>)&nbsp; = &nbsp;G(x<sub>i</sub>)&nbsp;)&nbsp; &#8804; n/m,  for x &Epsilon; [0 , m-1]<br />
+                So according to this, if we choose a 'm' which is much greater as compared to 'n', probability could become negligible<br />
+                if( m >>> n ) Probability &cong; <b>O(negligible)</b><br />
+                Therefore, we choose 'm' of order <b>O(<i>10</i><sup>6</sup>)</b> and <b>Prime</b>
+
+
+
+                </p>
+            </div>
+        </ul>
+
+        <h1>Implementation</h1>
+        <pre><code style="border-radius: 25px;" id="code">
+            //HashTable is array of linked list
+            #include&lt;stdio.h&gt;
+            #include&lt;stdlib.h&gt;
+            #include&lt;time.h&gt;
+            #include&lt;string.h&gt;
+            //int mode[10] = {65701,44701,32297,50821,88789,22621,61843,31513,62921,49081};
+
+            struct node
+            {
+            	int data;
+            	struct node *next;
+            };
+
+            // Prime number and size of hashtable
+            int m = 88789;
+            struct node *hashtable[88789];
+
+            int hashing_string(char *a,int i,int j,int x)
+            {
+            	int p=0;
+            	for(int k=i;k&lt;j+i;k++)
+            		p = (p*x + a[k])%m;
+            	return p;
+            }
+
+            int hashing_int(long long int a)
+            {
+            	return a%m;
+            }
+
+            //Here the 'head' is the hashtable[hash], where 'hash' is the hash-value of string or integer
+            void hash_insert(struct node **head,int key)
+            {
+            	struct node *temp;
+            	temp = malloc(sizeof(struct node));
+            	temp-&gt;data = key;
+            	if((*head)==NULL)
+            		(*head) = temp;
+            	else
+            	{
+            		temp->next = (*head);
+            		(*head) = temp;
+            	}
+            }
+
+            void deleteatmid(struct node *head,int key)
+            {
+            	struct node *temp;
+            	temp = malloc(sizeof(struct node));
+            	for(int i=0;i&lt;key;i++)
+            	{
+            		temp = head;
+            		head = head->next;
+            	}
+            	temp->next = head->next;
+            }
+
+
+            int *rolling_hash(char *a,int k,int x)
+            {
+            	int *rolling_hash_values = malloc(sizeof(int)*(strlen(a)-k+1));
+            	int t = hashing_string(a,0,k,x);
+            	rolling_hash_values[0] = t;
+            	int h=1;
+            	for(int i=1;i&lt;k;i++) h = ( h%m * x%m)%m;
+            	// Calculate hash value for next window of text: Remove leading digit, add trailing digit
+            	for(int i=0;i&lt;strlen(a)-k;i++){
+                    t = (x*(t - a[i]*h) + a[i+k])%m;
+                    // We might get negative value of t, converting it to positive
+                    if (t < 0) t = (t + m);
+
+            		// To confirm that if 't' is same as hashing_string(a,i+1,k,x) then uncomment the next line`
+            		// printf("%d %d\n",t,hashing_string(a,i+1,k,x));
+            		rolling_hash_values[i+1] = t;
+                }
+            	return rolling_hash_values;
+            }
+            //ablity to handle conflicts
+            int main()
+            {
+            	char string_array[] = "HashtableAndHashing";
+            	int rollingHash_size = 4;
+            	int x = 25;
+            	int *hashed_values = rolling_hash(string_array,rollingHash_size,x);
+            	int n = strlen(string_array)-rollingHash_size+1;
+            	for(int i=0;i&lt;n;i++) printf("%d ",hashed_values[i]);
+            	printf("\n");
+            	return 0;
+            }
+        </pre></code>
+
+        <!-- IDE ======================================================================================================== -->
+        <script>
+            SEC_HTTPS = true;
+            SEC_BASE = "compilers.widgets.sphere-engine.com";
+            (function(d, s, id){ SEC = window.SEC || (window.SEC = []);
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+              js.src = (SEC_HTTPS ? "https" : "http") + "://" + SEC_BASE + "/static/sdk/sdk.js";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, "script", "sphere-engine-compilers-jssdk"));
+            SEC.ready=function(e){"loading"!=document.readyState&&"interactive"!=document.readyState?e():window.addEventListener("load",e)};
+        </script>
+        <!-- <button onclick="runIDE();" class="runIDE">Run On IDE</button> -->
+        <a data-title="Awesome Button" onclick="runIDE();" class="runIDE" >Run On IDE</a>
+        <style>
+            .runIDE{
+                background: linear-gradient(135deg, #6e8efb, #a777e3);
+                border-radius: 4px;
+                display: inline-block;
+                padding: 1em 5em;
+                cursor: pointer;
+                user-select: none;
+                color: white;
+            }
+        </style>
+
+        <div style="height: 500px; width: 60em; display: none;" id="runIde">
+            <div data-id="sec-widget" data-widget="1ff6ad793b52a617ca440adb76c34533"></div>
+            <script>
+                SEC.ready(function() {
+                    var sourceCode = document.getElementById("code").innerText;
+                    var SECWidget = SEC.widget("sec-widget");
+                    SECWidget.loadCode(11, sourceCode, "");
+                });
+            </script>
         </div>
-        <div>
-            <li style="font-family: Monospace"><h1>String Hashing</h1></li>
-            <p>
-            If data is a String, hashing algorithm can't be same as that of integer hashing algorithm as the string
-            can't be represented as index. Hence we need to come up with good hashing algorithm which has less probability
-            of collisions. The most prominent hashing algorithm used for strings is :<br />
-            Given a string 'str' of size 'n', we form a polynomial of the form<br />
-            <b>h(x) = (str[0])&nbsp;<i>x</i><sup>n-1</sup>&ensp; + &ensp;(str[1])&nbsp;<i>x</i><sup>n-2</sup>&ensp; + &ensp;
-                (str[2])&nbsp;<i>x</i><sup>n-3</sup> &ensp;+&ensp; ............ &ensp;+&ensp; (str[n-1])</b><br />
-            <b> h(x) = &Sigma;(&ensp;(str[i])&nbsp;<i>x</i><sup>n-1-i</sup>&ensp;)</b> &emsp;for : 0 &#8804; i < n
-            and x &Epsilon; R<br />
-            So for a given 'x', hash value of a string 'str' is defined like h(x) where str[i] is the ascii value of that
-            letter. For eg: if str="abc" and x=50, hash value of the string str will be: <br />
-            h(50) = (97)&nbsp;<i>50</i><sup>2</sup> &ensp;+&ensp;(98)&nbsp;<i>50</i><sup>1</sup> &ensp;+&ensp;99&ensp;=&ensp;247499
-            <br />
-            But even this hashing algorithm has the same problem that integer hashing algorithm faced. If the value of 'x' is big
-            or the length of the string is large, hash value of the string might become of an order more than
-            <b>O(<i>10</i><sup>6</sup>)</b>, due to which we can't store it. Hence solution is similar to that of integer hashing,
-            we modify the hash algorithm by returning h(x) modulo 'm' (h(x)%m) where 'm' is the size of the hashtable. With
-            this, hash value of a string will never be more than 'm'(size of the hash table) and we can store the string in the
-            hashtable at the index given by hash function.<br />
-            You might be thinking why are we making a polynomial and why did we chose this hash function over thousand others?<br />
-            To answer this question, we first need to know how to choose a hash function. As we already discused, there is 100%
-            guarantee of getting a collisions if we need to store number of data points that more than the maximum size of an array.
-            So we need to choose a hash function such that, probability of having same hash value for two different data points
-            is negligible.<br />
-
-
-            </p>
-        </div>
-
-    </ul>
+        <script>
+            function runIDE(){
+                var x = document.getElementById("runIde");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+        </script>
 
     </div>

@@ -43,9 +43,10 @@ title : Linked List
 
         <h1>Implemetation</h1>
 
-        <pre><code style="border-radius: 25px;">
-        #include< stdio.h>
-        #include< stdlib.h>
+        <pre><code style="border-radius: 25px;" id="code">
+
+        #include&lt;stdio.h&gt;
+        #include&lt;stdlib.h&gt;
 
         struct node{
         	int data;
@@ -55,7 +56,7 @@ title : Linked List
         void addatbegin(struct node **head,int key)
         {
         	struct node *temp;
-        	temp = malloc(sizeof(struct node));
+        	temp = (struct node *)malloc(sizeof(struct node));
         	temp->data = key;
         	temp->next = (*head);
         	(*head) = temp;
@@ -64,7 +65,7 @@ title : Linked List
         void addatend(struct node *head,int key)
         {
         	struct node *temp;
-        	temp = malloc(sizeof(struct node));
+        	temp = (struct node *)malloc(sizeof(struct node));
         	temp->data = key;
         	while(head->next != NULL)
         		head = head->next;
@@ -75,7 +76,7 @@ title : Linked List
         void addatmiddle(struct node *head,int key,int middata)
         {
         	struct node *temp,*pev;
-        	temp = malloc(sizeof(struct node));
+        	temp = (struct node *)malloc(sizeof(struct node));
         	temp->data = key;
         	while(head->data != middata)
         		head = head->next;
@@ -98,7 +99,7 @@ title : Linked List
         void deleteatmid(struct node *head,int key)
         {
         	struct node *temp;
-        	for(int i=0;i<key;i++)
+        	for(int i=0;i&lt;key;i++)
         	{
         		temp = head;
         		head = head->next;
@@ -120,7 +121,7 @@ title : Linked List
         int  main()
         {
         	struct node *head,*a;
-        	a = malloc(sizeof(struct node));
+        	a = (struct node *)malloc(sizeof(struct node));
         	a->data = 1;
         	a->next = NULL;
         	head = a;
@@ -132,8 +133,42 @@ title : Linked List
         	print(head);
         	return 0;
         }
-
-
         </pre></code>
+
+        <!-- IDE ======================================================================================================== -->
+        <script>
+            SEC_HTTPS = true;
+            SEC_BASE = "compilers.widgets.sphere-engine.com";
+            (function(d, s, id){ SEC = window.SEC || (window.SEC = []);
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+              js.src = (SEC_HTTPS ? "https" : "http") + "://" + SEC_BASE + "/static/sdk/sdk.js";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, "script", "sphere-engine-compilers-jssdk"));
+            SEC.ready=function(e){"loading"!=document.readyState&&"interactive"!=document.readyState?e():window.addEventListener("load",e)};
+        </script>
+
+        <button onclick="runIDE();" class="runIDE">Run On IDE</button>
+
+        <div style="height: 500px; width: 60em; display: none;" id="runIde">
+            <div data-id="sec-widget" data-widget="1ff6ad793b52a617ca440adb76c34533"></div>
+            <script>
+                SEC.ready(function() {
+                    var sourceCode = document.getElementById("code").innerText;
+                    var SECWidget = SEC.widget("sec-widget");
+                    SECWidget.loadCode(11, sourceCode, "");
+                });
+            </script>
+        </div>
+        <script>
+            function runIDE(){
+                var x = document.getElementById("runIde");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+        </script>
 
     </div>
