@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Traversal</title>
+    <link rel="shortcut icon" href="http://localhost:4000/assets/logo.ico" />
+    <link rel="stylesheet" href="http://localhost:4000/css/posts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css" >
+    <!-- <link rel="stylesheet" href="/path/to/styles/default.css"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+</head>
+
+
+
+<body>
+        <div class="heading">
+        <span class="title">Order Traversals</span>
+        <br>
+    </div>
+
+    <div class="content">
+        <h1>Pre Order</h1>
+        <br>
+        <img src="http://localhost:4000/assets/traverlsal/PreOrderTrav.gif" >
+
+        <p>
+            Unlike linear Data Structures which have only one logical way to traverse them, trees can be traversed
+            in different ways, called Depth First Traversal. <br />
+            First Being the Pre Order Traversal where we visit the root first and then recursively visit left
+            subtree and then recursively visit right subtree.
+            <div style="background-color: rgb(230,230,230);">
+                <ol>
+                    <p><b>Pre Order</b></p>
+                    <li>Visit Root</li>
+                    <li>Visit Left Subtree</li>
+                    <li>Visit Right Subtree</li>
+                </ol>
+            </div>
+        </p>
+
+        <h1>Post Order</h1>
+        <br>
+        <img src="http://localhost:4000/assets/traverlsal/PostorderTrav.gif" >
+
+        <p>
+            Second Being the Pre Order Traversal where we visit the root first and then recursively visit left
+            subtree and then recursively visit right subtree.
+        </p>
+        <div style="background-color: rgb(230,230,230);">
+            <ol>
+                <p><b>Post Order</b></p>
+                <li>Visit Left Subtree</li>
+                <li>Visit Root</li>
+                <li>Visit Right Subtree</li>
+            </ol>
+        </div>
+
+        <h1>In Order</h1>
+        <br>
+        <img src="http://localhost:4000/assets/traverlsal/InorderTrav.gif" >
+
+        <p>
+            Unlike linear Data Structures which have only one logical way to traverse them, trees can be traversed
+            in different ways, called Depth First Traversal. <br />
+            First Being the Pre Order Traversal where we visit the root first and then recursively visit left
+            subtree and then recursively visit right subtree.
+        </p>
+        <div style="background-color: rgb(230,230,230);">
+            <ol>
+                <p><b>In Order</b></p>
+                <li>Visit Left Subtree</li>
+                <li>Visit Right Subtree</li>
+                <li>Visit Root</li>
+            </ol>
+        </div>
+
+        <h1>Implementation</h1>
+        <pre><code style="border-radius: 25px;" id="code">
+        #include&lt;stdio.h>
+        #include&lt;stdlib.h>
+
+        struct node
+        {
+             int data;
+             struct node* left;
+             struct node* right;
+        };
+        void Enqueue(struct node **a,int *r,struct node *new_node)
+        {
+             a[(*r)] = new_node;
+             (*r)++;
+
+        }
+        struct node *Dequeue(struct node **a,int *f)
+        {
+             (*f)++;
+             return a[(*f)-1];
+        }
+
+        struct node* newNode(int data)
+        {
+             struct node* node = (struct node*)malloc(sizeof(struct node));
+             node->data = data;
+             node->left = NULL;
+             node->right = NULL;
+
+             return(node);
+        }
+
+        void printPostorder(struct node* node)
+        {
+             if (node == NULL)
+                return;
+             printPostorder(node->left);
+             printPostorder(node->right);
+             printf("%d ", node->data);
+        }
+
+        void printInorder(struct node* node)
+        {
+             if (node == NULL)
+                  return;
+             printInorder(node->left);
+             printf("%d ", node->data);
+             printInorder(node->right);
+        }
+
+
+        void printPreorder(struct node* node)
+        {
+             if (node == NULL)
+                  return;
+             printf("%d ", node->data);
+             printPreorder(node->left);
+             printPreorder(node->right);
+        }
+
+        void printLevelorder(struct node* node,int n)
+        {
+             struct node *a[n];
+             struct node* temp;
+             int rear=0,front=0;
+             temp = node;
+             while(temp)
+             {
+                  printf("%d ",temp->data );
+                  if(temp->left)
+                       Enqueue(a,&rear,temp->left);
+                  if(temp->right)
+                       Enqueue(a,&rear,temp->right);
+                  temp = Dequeue(a,&front);
+             }
+        }
+
+        int height(struct node* node)
+        {
+            if (node==NULL)
+                return 0;
+            else
+            {
+                  int lheight = height(node->left);
+                  int rheight = height(node->right);
+                  if (lheight > rheight)
+                       return(lheight+1);
+                  else
+                       return(rheight+1);
+            }
+        }
+
+        int main()
+        {
+             struct node *root  = newNode(1);
+             root->left = newNode(2);
+             root->right = newNode(3);
+             (root->left)->left = newNode(4);
+             (root->left)->right = newNode(5);
+
+             printf("Preorder traversal of binary tree is \n");
+             printPreorder(root);
+
+             printf("\nInorder traversal of binary tree is \n");
+             printInorder(root);
+
+             printf("\nPostorder traversal of binary tree is \n");
+             printPostorder(root);
+
+             printf("\nLevelorder traversal of binary tree is \n");
+             printLevelorder(root,5);
+
+             printf("\nHeight of binary tree is \n");
+             int h = height(root);
+             printf("%d", h);
+
+
+             printf("\n");
+             return 0;
+        }
+
+        </pre></code>
+        <!-- IDE ======================================================================================================== -->
+        <script>
+            SEC_HTTPS = true;
+            SEC_BASE = "compilers.widgets.sphere-engine.com";
+            (function(d, s, id){ SEC = window.SEC || (window.SEC = []);
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+              js.src = (SEC_HTTPS ? "https" : "http") + "://" + SEC_BASE + "/static/sdk/sdk.js";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, "script", "sphere-engine-compilers-jssdk"));
+            SEC.ready=function(e){"loading"!=document.readyState&&"interactive"!=document.readyState?e():window.addEventListener("load",e)};
+        </script>
+        <!-- <button onclick="runIDE();" class="runIDE">Run On IDE</button> -->
+        <a data-title="Awesome Button" onclick="runIDE();" class="runIDE" >Run On IDE</a>
+        <style>
+            .runIDE{
+                background: linear-gradient(135deg, #6e8efb, #a777e3);
+                border-radius: 4px;
+                display: inline-block;
+                padding: 1em 5em;
+                cursor: pointer;
+                user-select: none;
+                color: white;
+                font-family: "Comic Sans MS", cursive, sans-serif;
+            }
+        </style>
+
+        <div style="height: 500px; width: 60em; display: none;" id="runIde">
+            <div data-id="sec-widget" data-widget="1ff6ad793b52a617ca440adb76c34533"></div>
+            <script>
+                SEC.ready(function() {
+                    var sourceCode = document.getElementById("code").innerText;
+                    var SECWidget = SEC.widget("sec-widget");
+                    SECWidget.loadCode(11, sourceCode, "");
+                });
+            </script>
+        </div>
+        <script>
+            function runIDE(){
+                var x = document.getElementById("runIde");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+        </script>
+        <!-- IDE =================================================================================================== -->
+
+    </div>
+
+</body>
+
+<script>hljs.initHighlightingOnLoad();</script>
+
+</html>
