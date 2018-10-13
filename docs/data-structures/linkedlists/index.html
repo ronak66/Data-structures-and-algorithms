@@ -148,7 +148,19 @@ title : Linked List
             SEC.ready=function(e){"loading"!=document.readyState&&"interactive"!=document.readyState?e():window.addEventListener("load",e)};
         </script>
 
-        <button onclick="runIDE();" class="runIDE">Run On IDE</button>
+        <a data-title="Awesome Button" onclick="runIDE();" class="runIDE" >Run On IDE</a>
+        <style>
+            .runIDE{
+                background: linear-gradient(135deg, #6e8efb, #a777e3);
+                border-radius: 4px;
+                display: inline-block;
+                padding: 1em 5em;
+                cursor: pointer;
+                user-select: none;
+                color: white;
+                font-family: "Comic Sans MS", cursive, sans-serif;
+            }
+        </style>
 
         <div style="height: 500px; width: 60em; display: none;" id="runIde">
             <div data-id="sec-widget" data-widget="1ff6ad793b52a617ca440adb76c34533"></div>
@@ -170,5 +182,6 @@ title : Linked List
                 }
             }
         </script>
+        <!-- IDE =================================================================================================== -->
 
     </div>

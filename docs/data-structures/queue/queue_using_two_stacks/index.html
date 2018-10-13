@@ -27,10 +27,10 @@ title : Queue using two Stacks
         </p>
 
         <h1>Implementation</h1>
-        <pre><code style="border-radius: 25px;">
+        <pre><code style="border-radius: 25px;" id="code">
             // Program to implement a queue using two stacks
-            #include< stdio.h>
-            #include< stdlib.h>
+            #include&lt;stdio.h>
+            #include&lt;stdlib.h>
 
             // structure of a stack node
             struct sNode
@@ -172,6 +172,54 @@ title : Queue using two Stacks
             }
 
         </pre></code>
+
+        <!-- IDE ======================================================================================================== -->
+        <script>
+            SEC_HTTPS = true;
+            SEC_BASE = "compilers.widgets.sphere-engine.com";
+            (function(d, s, id){ SEC = window.SEC || (window.SEC = []);
+              var js, fjs = d.getElementsByTagName(s)[0];
+              if (d.getElementById(id)) return; js = d.createElement(s); js.id = id;
+              js.src = (SEC_HTTPS ? "https" : "http") + "://" + SEC_BASE + "/static/sdk/sdk.js";
+              fjs.parentNode.insertBefore(js, fjs);
+            }(document, "script", "sphere-engine-compilers-jssdk"));
+            SEC.ready=function(e){"loading"!=document.readyState&&"interactive"!=document.readyState?e():window.addEventListener("load",e)};
+        </script>
+        <!-- <button onclick="runIDE();" class="runIDE">Run On IDE</button> -->
+        <a data-title="Awesome Button" onclick="runIDE();" class="runIDE" >Run On IDE</a>
+        <style>
+            .runIDE{
+                background: linear-gradient(135deg, #6e8efb, #a777e3);
+                border-radius: 4px;
+                display: inline-block;
+                padding: 1em 5em;
+                cursor: pointer;
+                user-select: none;
+                color: white;
+                font-family: "Comic Sans MS", cursive, sans-serif;
+            }
+        </style>
+
+        <div style="height: 500px; width: 60em; display: none;" id="runIde">
+            <div data-id="sec-widget" data-widget="1ff6ad793b52a617ca440adb76c34533"></div>
+            <script>
+                SEC.ready(function() {
+                    var sourceCode = document.getElementById("code").innerText;
+                    var SECWidget = SEC.widget("sec-widget");
+                    SECWidget.loadCode(11, sourceCode, "");
+                });
+            </script>
+        </div>
+        <script>
+            function runIDE(){
+                var x = document.getElementById("runIde");
+                if (x.style.display === "none") {
+                    x.style.display = "block";
+                } else {
+                    x.style.display = "none";
+                }
+            }
+        </script>
         <br />
         <h1>Use</h1>
         <p>
@@ -181,5 +229,7 @@ title : Queue using two Stacks
             It is also a good brain exercise to come up with an alogrithm to create a queue using only stacks (Which is one of
             the reason beginners are given this problem) .
         </p>
+
+
 
     </div>
