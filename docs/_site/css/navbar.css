@@ -13,6 +13,9 @@
     margin-left: auto; 
 }
 
+.mobile{
+    display: none; 
+}
 .navbar-left{
     display: flex;
     justify-content: flex-start;
@@ -44,4 +47,13 @@
     /* background-color: green; */
     height: 100%;
     /* max-width: 70%;  */
+}
+
+@media only screen and (max-width : 700px){
+    .navbar-right{
+        display: none;
+    }
+    .mobile{
+        display: flex;
+    }
 }
