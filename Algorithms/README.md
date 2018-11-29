@@ -1,6 +1,6 @@
 # Helpful Concepts for Competetive Programming!
 
-## Number Theory
+## Number Theory 
 
 1. 	**n** is in the Fibonacci sequence if, **5(n^2) + 4** or **5(n^2) - 4** or if both are perfect squares
 
