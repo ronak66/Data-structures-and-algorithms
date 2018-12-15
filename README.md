@@ -18,6 +18,7 @@ average O(n)
 * **Depth First Search**
 * **Breath First Search**
 * **Prims Algorithm** - To find min span tree
+* **Bellman Ford Algorithm**
 
 
 # Data strucures
