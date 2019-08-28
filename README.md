@@ -29,6 +29,7 @@ average O(n)
 * **Binary Heap(Min)**
 * **Binary Indexed Tree**
 * **Segment Tree**
+* **Segment Tree with Lazy Propogation**
 * **AVL_Tree (Balanced Binary Search Tree)**
+* **Red Black Tree**
 
-Try Solving these problems [Problems](https://ronak66.github.io/Data-structures-and-algorithms)
