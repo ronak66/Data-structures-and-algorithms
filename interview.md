@@ -23,7 +23,7 @@ Links to interview problems/algorithms:
 ## Company Questions
 
 ### Google
-* You are given a chess board which has marked and unmarked squares. Given the initial position of rook, find the least number of steps required for the rook to reach the given target position. Catch is, the rook can't step on marked squares.  
+* You are given a chess board which has marked and unmarked squares. Given the initial position of rook, find the least number of moves required for the rook to reach the given target position. Catch is, the rook can't step on marked squares.  
 **Solution:** [https://www.geeksforgeeks.org/minimum-steps-reach-target-knight/](https://www.geeksforgeeks.org/minimum-steps-reach-target-knight/)  
 Continuing the last question, if you are given multiple of such queries what will be efficeint way to solve it?  
 **Solution:** Apply BFS from the target position.
@@ -32,7 +32,7 @@ Continuing the last question, if you are given multiple of such queries what wil
 **Hint:** Efficent algorithm is of order O(logn)  
 **Solution:** [https://www.geeksforgeeks.org/find-local-minima-array/](https://www.geeksforgeeks.org/find-local-minima-array/)
 
-* Implement LRU-cahce (Least Recently Used)  
+* Implement LRU-cache (Least Recently Used)  
 **Solution:** [https://www.geeksforgeeks.org/lru-cache-implementation/](https://www.geeksforgeeks.org/lru-cache-implementation/)
 
 
