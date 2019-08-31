@@ -28,7 +28,7 @@ Links to interview problems/algorithms:
 Continuing the last question, if you are given multiple of such queries what will be efficeint way to solve it?  
 **Solution:** Apply BFS from the target position.
 
-* Given an array of integers, find a local minima i.e. find any index 'i' such that a[i-1]>a[i]<a[i+1]  
+* Given an array of size 'n', find a local minima i.e. find any index 'i' such that a[i-1]>a[i]<a[i+1] and for edge points a[0]<a[1] and a[n-2]>a[n-1]  
 **Hint:** Efficent algorithm is of order O(logn)  
 **Solution:** [https://www.geeksforgeeks.org/find-local-minima-array/](https://www.geeksforgeeks.org/find-local-minima-array/)
 
