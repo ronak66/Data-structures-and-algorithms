@@ -20,7 +20,7 @@ Links to interview problems/algorithms:
 [https://leetcode.com/problemset/algorithms/](https://leetcode.com/problemset/algorithms/?fbclid=IwAR0zPqQ1upSydkTZfNZ2Uz41rcJI9mfGmbWDoL5d26YhkSnB8HlOfPEQdp0)  
 [https://www.geeksforgeeks.org/must-do-coding-questions-for-companies-like-amazon-microsoft-adobe/](https://www.geeksforgeeks.org/must-do-coding-questions-for-companies-like-amazon-microsoft-adobe/?fbclid=IwAR237FMw2abZHG-KIiSf1lHUVIpKKuMxogOHWYfguIHd-m8tfIfSwgxX7mk)
 
-## Company Questions
+## Company Wise Questions
 
 ### Google
 * You are given a chess board which has marked and unmarked squares. Given the initial position of rook, find the least number of moves required for the rook to reach the given target position. Catch is, the rook can't step on marked squares.  
@@ -36,3 +36,4 @@ Continuing the last question, if you are given multiple of such queries what wil
 **Solution:** [https://www.geeksforgeeks.org/lru-cache-implementation/](https://www.geeksforgeeks.org/lru-cache-implementation/)
 
 
+More comming ....
